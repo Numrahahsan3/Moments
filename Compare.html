@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Compare Products</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body{
+    background:#eef1f5;
+}
+h2{
+    text-align:center;
+}
+.box{
+    max-width:1200px;
+    margin:auto;
+    background:#fff;
+    padding:20px;
+}
+.selects{
+    display:flex;
+    gap:20px;
+}
+select,button{
+    width:100%;
+    padding:10px;
+}
+button{
+    margin-top:20px;
+    background:#dc3545;
+    color:#fff;
+    border:none;
+    cursor:pointer;
+}
+.result{
+    display:flex;
+    gap:20px;
+    margin-top:30px;
+}
+.card{
+    width:50%;
+    border:1px solid #ccc;
+    padding:15px;
+}
+.card img{
+    width:220px;
+    display:block;
+    margin:auto;
+}
+.price{
+    color:green;
+    font-weight:bold;
+    text-align:center;
+}
+ul{
+    margin-top:10px;
+}
+@media (min-width: 1400px){
+  .box{
+    max-width: 1300px;
+  }
+}
+
+@media (max-width: 1200px){
+  .box{
+    max-width: 1100px;
+  }
+}
+
+@media (max-width: 992px){
+  .box{
+    max-width: 950px;
+  }
+}
+</style>
+</head>
+
+<body>
+<header class="main-header">
+    <div class="header-container">
+     <div class="logo">
+        <img src="images/logo.png" alt="">
+        <span class="logo-text">FOTOLAB</span>
+     </div>
+    <nav class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="Product.html">PRODUCTS</a>
+      <a href="Compare.html">COMPARE</a>
+      <a href="Contact Us.html">CONTACT US</a>
+    </nav>
+</div>
+ </header>
+ <div class="announcement-bar ">
+   <p><a href="#"></a>Shop Now and Get 10% Discount</p>
+ </div> <br>
+<h2>Compare Cameras & Lenses</h2>
+
+<div class="box">
+
+<div class="selects">
+    <select id="p1"><option value="">Select Product 1</option></select>
+    <select id="p2"><option value="">Select Product 2</option></select>
+</div>
+
+<button onclick="compare()">Compare</button>
+
+<div class="result" id="output"></div>
+
+</div>
+
+<script>
+const products = [
+
+/* ================== NIKON CAMERAS ================== */
+{ name:"Nikon D850", brand:"Nikon", type:"Camera", price:"$329", mp:"45.7MP", sensor:"Full Frame", iso:"64–25600", weight:"1005g" },
+{ name:"Nikon D6", brand:"Nikon", type:"Camera", price:"$530", mp:"20.8MP", sensor:"Full Frame", iso:"100–102400", weight:"1270g" },
+{ name:"Nikon D780", brand:"Nikon", type:"Camera", price:"$530", mp:"24.5MP", sensor:"Full Frame", iso:"100–51200", weight:"840g" },
+{ name:"Nikon D750", brand:"Nikon", type:"Camera", price:"$530", mp:"24.3MP", sensor:"Full Frame", iso:"100–12800", weight:"750g" },
+{ name:"Nikon D3500", brand:"Nikon", type:"Camera", price:"$530",  mp:"24.2MP", sensor:"APS-C", iso:"100–25600", weight:"415g" },
+{ name:"Nikon D500", brand:"Nikon", type:"Camera", price:"$530",  mp:"20.9MP", sensor:"APS-C", iso:"100–51200", weight:"860g" },
+
+/* ================== CANON CAMERAS ================== */
+{ name:"Canon EOS Rebel T7", brand:"Canon", type:"Camera", price:"$329",  mp:"24.1MP", sensor:"APS-C", iso:"100–6400", weight:"475g" },
+{ name:"Canon Digital Rebel XTi", brand:"Canon", type:"Camera", price:"$530",  mp:"10.1MP", sensor:"APS-C", iso:"100–1600", weight:"556g" },
+{ name:"Canon EOS 90D", brand:"Canon", type:"Camera", price:"$530",  mp:"32.5MP", sensor:"APS-C", iso:"100–25600", weight:"701g" },
+{ name:"Canon EOS 6D", brand:"Canon", type:"Camera", price:"$530",  mp:"20.2MP", sensor:"Full Frame", iso:"100–25600", weight:"770g" },
+{ name:"Canon EOS Rebel XS", brand:"Canon", type:"Camera", price:"$530",  mp:"10.1MP", sensor:"APS-C", iso:"100–1600", weight:"450g" },
+{ name:"Canon EOS Rebel SL2", brand:"Canon", type:"Camera", price:"$530",  mp:"24.2MP", sensor:"APS-C", iso:"100–25600", weight:"453g" },
+
+/* ================== SONY CAMERAS ================== */
+{ name:"Sony Alpha a99 II", brand:"Sony", type:"Camera", price:"$929",  mp:"42.4MP", sensor:"Full Frame", iso:"100–25600", weight:"849g" },
+{ name:"Sony Alpha a68", brand:"Sony", type:"Camera", price:"$530",  mp:"24MP", sensor:"APS-C", iso:"100–25600", weight:"610g" },
+{ name:"Sony Alpha a58", brand:"Sony", type:"Camera", price:"$530",  mp:"20.1MP", sensor:"APS-C", iso:"100–16000", weight:"573g" },
+{ name:"Sony Alpha a900", brand:"Sony", type:"Camera", price:"$530",  mp:"24.6MP", sensor:"Full Frame", iso:"200–3200", weight:"895g" },
+{ name:"Sony Alpha a390", brand:"Sony", type:"Camera", price:"$530",  mp:"14.2MP", sensor:"APS-C", iso:"100–3200", weight:"456g" },
+
+/* ================== CANON LENSES ================== */
+{ name:"EF 50mm f/1.8 STM", brand:"Canon", type:"Lens", price:"$329",  focal:"50mm", aperture:"f/1.8", mount:"EF", weight:"160g" },
+{ name:"RF 24-240mm f/4-6.3", brand:"Canon", type:"Lens", price:"$530", focal:"24–240mm", aperture:"f/4-6.3", mount:"RF", weight:"750g" },
+{ name:"RF 28-70mm f/2L", brand:"Canon", type:"Lens", price:"$530",  focal:"28–70mm", aperture:"f/2", mount:"RF", weight:"1430g" },
+{ name:"", brand:"Canon", type:"Lens", price:"$530", img:"", focal:"", aperture:"f/2", mount:"RF", weight:"1430g" },
+
+/* ================== NIKON LENSES ================== */
+{ name:"AF-S 50mm f/1.8G", brand:"Nikon", type:"Lens", price:"$530",  focal:"50mm", aperture:"f/1.8", mount:"F", weight:"185g" },
+{ name:"AF-S 70-200mm f/2.8", brand:"Nikon", type:"Lens", price:"$530", focal:"70–200mm", aperture:"f/2.8", mount:"F", weight:"1430g" },
+{ name:"AF-P 10-20mm VR", brand:"Nikon", type:"Lens", price:"$530",  focal:"10–20mm", aperture:"f/4.5-5.6", mount:"F", weight:"230g" },
+
+/* ================== SONY LENSES ================== */
+{ name:"Sony FE 50mm f/1.8", brand:"Sony", type:"Lens", price:"$329",  focal:"50mm", aperture:"f/1.8", mount:"E", weight:"186g" },
+{ name:"Sony FE 24-70mm f/2.8", brand:"Sony", type:"Lens", price:"$530",  focal:"24–70mm", aperture:"f/2.8", mount:"E", weight:"886g" }
+
+];
+
+const p1Select = document.getElementById('p1');
+const p2Select = document.getElementById('p2');
+
+products.forEach((p,i)=>{
+  p1Select.innerHTML += `<option value="${i}">${p.name} (${p.type})</option>`;
+  p2Select.innerHTML += `<option value="${i}">${p.name} (${p.type})</option>`;
+});
+
+function compare() {
+    let id1 = p1Select.value;
+    let id2 = p2Select.value;
+
+    if (id1 === "" || id2 === "") {
+        alert("Please select two products to compare!");
+        return;
+    }
+
+    let item1 = products[id1];
+    let item2 = products[id2];
+
+    document.getElementById('output').innerHTML = `
+        <div class="card">
+            <h3>${item1.name}</h3>
+            <p class="price">${item1.price}</p>
+            <ul>
+                <li><strong>Brand:</strong> ${item1.brand}</li>
+                <li><strong>Type:</strong> ${item1.type}</li>
+                ${item1.type === "Camera" ? `
+                    <li><strong>Resolution:</strong> ${item1.mp}</li>
+                    <li><strong>Sensor:</strong> ${item1.sensor}</li>
+                    <li><strong>ISO:</strong> ${item1.iso}</li>
+                ` : `
+                    <li><strong>Focal Length:</strong> ${item1.focal}</li>
+                    <li><strong>Aperture:</strong> ${item1.aperture}</li>
+                    <li><strong>Mount:</strong> ${item1.mount}</li>
+                `}
+                <li><strong>Weight:</strong> ${item1.weight}</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>${item2.name}</h3>
+            <p class="price">${item2.price}</p>
+            <ul>
+                <li><strong>Brand:</strong> ${item2.brand}</li>
+                <li><strong>Type:</strong> ${item2.type}</li>
+                ${item2.type === "Camera" ? `
+                    <li><strong>Resolution:</strong> ${item2.mp}</li>
+                    <li><strong>Sensor:</strong> ${item2.sensor}</li>
+                    <li><strong>ISO:</strong> ${item2.iso}</li>
+                ` : `
+                    <li><strong>Focal Length:</strong> ${item2.focal}</li>
+                    <li><strong>Aperture:</strong> ${item2.aperture}</li>
+                    <li><strong>Mount:</strong> ${item2.mount}</li>
+                `}
+                <li><strong>Weight:</strong> ${item2.weight}</li>
+            </ul>
+        </div>
+    `;
+}
+</script>
+<br>
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h3>ABOUT US</h3>
+      <ul>
+        <li><a href="#">About Fotolab</a></li>
+        <li><a href="#">Mission and History</a></li>
+        <li><a href="#">News</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h3>About FOTOLAB</h3>
+      <ul>
+        <li><a href="#">Our Mission</a></li>
+        <li><a href="#">Why FOTOLAB</a></li>
+        <li><a href="#">Work at FOTOLAB</a></li>
+      </ul>   
+    </div>
+ <div class="footer-column">
+      <h3>HELP CENTER</h3>
+      <ul>
+        <li><a href="#">Get Support</a></li>
+        <li><a href="#">Get Access</a></li>
+        <li><a href="#">Research Basics</a></li>
+      </ul>
+    </div>
+  </div>
+ <div class="footer-bottom">
+      <p>© Copyright 2026 FOTOLAB | All Rights Reserved</p>
+  </div>
+</footer>
+</body>
+</html>
+</body>
+</html>

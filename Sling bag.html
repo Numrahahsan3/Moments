@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+
+body{
+    background:#eef1f5;
+}
+
+/* PRODUCT PAGE */
+.product-page{
+    width:100%;
+    min-height:85vh;
+    background:#ffffff;
+    border-radius:12px;
+    padding:50px 70px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.12);
+}
+
+.product{
+    display:flex;
+    gap:70px;
+    align-items:flex-start;
+}
+
+/* IMAGE */
+.product img{
+    width:460px;
+    max-width:100%;
+    border-radius:10px;
+    border:1px solid #ddd;
+    background:#fafafa;
+    padding:15px;
+    object-fit:contain;
+}
+
+/* DETAILS */
+.details{
+    flex:1;
+}
+
+.product-label{
+    font-size:18px;
+    color:#555;
+    font-weight:600;
+}
+
+.product-title{
+    font-size:28px;
+    color:#111;
+    margin-bottom:20px;
+}
+
+.price-label{
+    font-size:18px;
+    color:#555;
+    font-weight:600;
+}
+
+.price{
+    font-size:24px;
+    font-weight:700;
+    color:#1a8f2b;
+    margin-bottom:30px;
+}
+
+.desc{
+    font-size:16px;
+    line-height:1.7;
+    color:#555;
+    margin-bottom:25px;
+}
+
+.details h3{
+    font-size:19px;
+    margin-bottom:15px;
+}
+
+.details ul{
+    padding-left:20px;
+}
+
+.details ul li{
+    font-size:15px;
+    margin-bottom:10px;
+    color:#333;
+}
+
+/* BUTTONS */
+.buttons{
+    margin-top:35px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 32px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:15px;
+    margin-right:15px;
+    transition:0.3s;
+}
+
+.buy{
+    background:#d6333b;
+    color:#fff;
+}
+
+.buy:hover{
+    background:#b52a30;
+}
+
+.back{
+    background:#222;
+    color:#fff;
+}
+
+.back:hover{
+    background:#000;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .product{
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+    }
+    .details ul{
+        text-align:left;
+        display:inline-block;
+    }
+}
+</style>
+<body>
+    <header class="main-header">
+    <div class="header-container">
+     <div class="logo">
+        <img src="images/logo.png" alt="">
+        <span class="logo-text">FOTOLAB</span>
+     </div>
+    <nav class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="Product.html">PRODUCTS</a>
+      <a href="Compare.html">COMPARE</a>
+      <a href="Contact Us.html">CONTACT US</a>
+    </nav>
+</div>
+ </header>
+ <div class="announcement-bar ">
+   <p><a href="#"></a>Shop Now and Get 10% Discount</p>
+ </div>
+ <section class="page">
+    <section class="page">
+    <div class="product-page">
+        <div class="product">
+            <img src="images/cc2.jpg" alt="Sling Bag SL100">
+            <div class="details">
+                <span class="product-label">Product Name:</span>
+                <h3 class="product-title">Sling Bag SL100</h3>
+                <div class="price">
+                    <span class="price-label">Price:</span> 
+                    <h3 class="product-title">$530</h3>
+                </div>
+                <p class="desc">
+                    <h3>Description:</h3>
+                    The Sling Bag SL100 is an innovative carrying solution designed for photographers who need quick and easy access to their gear while on the move. Unlike traditional backpacks, the sling design allows you to swing the bag to your front without taking it off, ensuring you never miss a shot. It is crafted with weather-resistant materials and features a ergonomic strap that distributes weight evenly across your shoulder for all-day comfort during long street photography sessions.
+                </p>
+                <br>
+                <h3>Specifications:</h3>
+                <ul>
+                    <li><strong>Capacity:</strong> Fits one DSLR/Mirrorless body and 2 small lenses.</li>
+                    <li><strong>Design:</strong> Single-strap sling design for rapid rotation.</li>
+                    <li><strong>Material:</strong> High-density water-repellent nylon fabric.</li>
+                    <li><strong>Tablet Slot:</strong> Dedicated padded compartment for 7-inch tablets.</li>
+                    <li><strong>Tripod Holder:</strong> Side attachment straps for compact travel tripods.</li>
+                </ul>
+                <br>
+                <h3>Key Features:</h3>
+                <ul>
+                    <li><strong>Quick Access:</strong> Side-entry door allows for camera retrieval in seconds.</li>
+                    <li><strong>Breathable Mesh:</strong> Back panel features air-mesh for ventilation.</li>
+                    <li><strong>Custom Interior:</strong> Padded Velcro dividers can be reshaped easily.</li>
+                    <li><strong>Hidden Pocket:</strong> Secure rear pocket for passports and cash.</li>
+                    <li><strong>Rain Cover:</strong> Includes a stowaway waterproof cover for extreme weather.</li>
+                </ul>
+                <div class="buttons">
+                    <a href="#" id="cartBtn" class="btn buy">Add to Cart</a>
+            <a href="documents/sli" class="btn details-btn" download>Download Detailed Features</a>
+                    <a href="canon.html" class="btn back">← Back to Products</a>
+                </div>
+                <script>
+    document.getElementById('cartBtn').onclick = function(e) {
+        e.preventDefault(); 
+        alert('Added to Cart!');
+    }
+</script>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h3>ABOUT US</h3>
+      <ul>
+        <li><a href="#">About Fotolab</a></li>
+        <li><a href="#">Mission and History</a></li>
+        <li><a href="#">News</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h3>About FOTOLAB</h3>
+      <ul>
+        <li><a href="#">Our Mission</a></li>
+        <li><a href="#">Why FOTOLAB</a></li>
+        <li><a href="#">Work at FOTOLAB</a></li>
+      </ul>   
+    </div>
+ <div class="footer-column">
+      <h3>HELP CENTER</h3>
+      <ul>
+        <li><a href="#">Get Support</a></li>
+        <li><a href="#">Get Access</a></li>
+        <li><a href="#">Research Basics</a></li>
+      </ul>
+    </div>
+  </div>
+ <div class="footer-bottom">
+      <p>© Copyright 2026 FOTOLAB | All Rights Reserved</p>
+  </div>
+</footer>
+</body>
+</html>
